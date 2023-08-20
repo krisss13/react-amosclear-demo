@@ -7,7 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
-  <footer className="bg-purple-700 py-6">
+  <footer className="bg-purple-700 p-6">
     <div className="container mx-auto flex justify-between items-center">
       <div className="font-bold bg-white rounded-full p-3">
         <Link to="/" className="flex items-center">

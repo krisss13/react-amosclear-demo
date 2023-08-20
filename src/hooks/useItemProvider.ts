@@ -7,7 +7,8 @@ const useItemProvider = () => {
   const [searchValue, setSearchValue] = useState('');
   const pageSize = 10;
   // eslint-disable-next-line max-len
-  const filterResult = () => items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) || [];
+  const filterResult = (value = '' ) => items.filter((item) => item.title.toLowerCase().includes(value ? value.toLowerCase() :searchValue.toLowerCase())) || [];
+
   const [filteredItems, setFilteredItems] = useState({
     items: filterResult().slice((currentPage - 1) * pageSize, currentPage * pageSize),
     totalPages: items.length / pageSize,
@@ -26,8 +27,8 @@ const useItemProvider = () => {
   const handleSearch = (value: string) => {
     setSearchValue(value);
     setFilteredItems({
-      items: filterResult().slice((currentPage - 1) * pageSize, currentPage * pageSize),
-      totalPages: filterResult().length / pageSize,
+      items: filterResult(value).slice((currentPage - 1) * pageSize, currentPage * pageSize),
+      totalPages: filterResult(value).length / pageSize,
     });
   };
 
