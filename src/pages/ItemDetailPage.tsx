@@ -21,7 +21,7 @@ const ItemDetailPage: React.FC<ItemDetailPageProps> = ({
   }
 
   return (
-    <div className="item-detail-page">
+    <div className="item-detail-page bg-white rounded p-4 lg:mt-6">
       <ItemDetail item={selectedItem} onToggleFavorite={onToggleFavorite} />
     </div>
   );

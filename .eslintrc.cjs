@@ -9,7 +9,7 @@ module.exports = {
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
- //   'plugin:prettier/recommended',
+    'plugin:prettier/recommended',
   ],
   overrides: [
     {
@@ -34,5 +34,6 @@ module.exports = {
     'react/function-component-definition': 0,
     'eslint-disable-next-line': 0,
     'linebreak-style': 0,
+    'prettier/prettier': 0
   },
 };

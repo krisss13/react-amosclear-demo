@@ -1,8 +1,8 @@
 import React from 'react';
-import { Item } from '../mockData';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { Item } from '../mockData';
 
 interface ItemProps {
   item: Item;
@@ -17,16 +17,17 @@ const ItemComponent: React.FC<ItemProps> = ({ item, onToggleFavorite }) => {
 
   return (
     <Link
-      to={'/item/' + item.id}
+      to={`/item/${item.id}`}
       className="flex"
     >
       <div className="bg-white rounded-xl p-4 shadow-md h-full flex flex-col items-center relative">
-          <div className="h-full">
-            <img src={item.thumbnail} alt={item.title} className="w-full h-32 object-cover mb-4" />
-            <h2 className="text-lg font-semibold">{item.title}</h2>
-            <p className="text-gray-600">{item.description}</p>
-          </div>
+        <div className="h-full">
+          <img src={item.thumbnail} alt={item.title} className="w-full h-32 object-cover mb-4" />
+          <h2 className="text-lg font-semibold">{item.title}</h2>
+          <p className="text-gray-600">{item.description}</p>
+        </div>
         <button
+          type="button"
           onClick={handleButtonClick}
           className={item.isFavorite ? 'bg-purple-800/80 mt-2 rounded-full absolute right-8' : 'bg-gray-100/90 mt-2 rounded-full absolute right-8'}
         >

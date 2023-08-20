@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import mockData from '../mockData';
 
-export const useItemProvider = () => {
+const useItemProvider = () => {
   const [items, setItems] = useState(mockData);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
   const pageSize = 10;
+  // eslint-disable-next-line max-len
   const filterResult = () => items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) || [];
   const [filteredItems, setFilteredItems] = useState({
     items: filterResult().slice((currentPage - 1) * pageSize, currentPage * pageSize),
     totalPages: items.length / pageSize,
   });
-  
+
   const favoriteCount = items.filter((item) => item.isFavorite).length;
 
   const handlePageChange = (newPage: number) => {
@@ -31,13 +32,15 @@ export const useItemProvider = () => {
   };
 
   const handleToggleFavorite = (itemId: number) => {
-    setItems((prevItems) => prevItems.map((item) => (item.id === itemId ? { ...item, isFavorite: !item.isFavorite } : item)));
-    setFilteredItems(({ items: prevItems, totalPages }) => {
-      return {
-        items: prevItems.map((item) => (item.id === itemId ? { ...item, isFavorite: !item.isFavorite } : item)),
-        totalPages,
-      };
-    });
+    setItems((prevItems) => prevItems.map((item) => (item.id === itemId
+      ? { ...item, isFavorite: !item.isFavorite }
+      : item)));
+    setFilteredItems(({ items: prevItems, totalPages }) => ({
+      items: prevItems.map((item) => (item.id === itemId
+        ? { ...item, isFavorite: !item.isFavorite }
+        : item)),
+      totalPages,
+    }));
   };
 
   return {
@@ -51,3 +54,5 @@ export const useItemProvider = () => {
     handleSearch,
   };
 };
+
+export default useItemProvider;

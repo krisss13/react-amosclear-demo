@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import ItemDetailPage from './pages/ItemDetailPage';
 import FavoritesPage from './pages/FavoritesPage';
-import { useItemProvider } from './hooks/useItemProvider';
-import './App.css';
+import useItemProvider from './hooks/useItemProvider';
 
 function App() {
   const {
@@ -19,13 +19,13 @@ function App() {
 
   return (
     <Router>
-       <div className="bg-gray-100 min-h-screen">
-         <Navigation favoriteCount={favoriteCount} handleSearch={handleSearch} />
+      <div className="bg-gray-100 min-h-screen">
+        <Navigation favoriteCount={favoriteCount} handleSearch={handleSearch} />
         <div className="container mx-auto p-4">
           <Routes>
             <Route
               path="/"
-              element={
+              element={(
                 <Home
                   items={filteredItems.items}
                   onToggleFavorite={handleToggleFavorite}
@@ -33,29 +33,30 @@ function App() {
                   totalPages={filteredItems.totalPages}
                   handlePageChange={handlePageChange}
                 />
-              }
+              )}
             />
             <Route
               path="/item/:id"
-              element={
+              element={(
                 <ItemDetailPage
                   items={items}
                   onToggleFavorite={handleToggleFavorite}
                 />
-              }
+              )}
             />
             <Route
               path="/favorites"
-              element={
+              element={(
                 <FavoritesPage
                   items={items}
                   onToggleFavorite={handleToggleFavorite}
                 />
-              }
+              )}
             />
           </Routes>
         </div>
       </div>
+      <Footer />
     </Router>
   );
 }

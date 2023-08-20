@@ -6,9 +6,9 @@ import Pagination from './Pagination';
 interface ItemListProps {
   items: Item[];
   onToggleFavorite: (itemId: number) => void;
-  currentPage: number;
-  totalPages: number;
-  handlePageChange: (newPage: number) => void;
+  currentPage?: number;
+  totalPages?: number;
+  handlePageChange?: (newPage: number) => void;
 }
 
 const ItemList: React.FC<ItemListProps> = ({
@@ -28,12 +28,20 @@ const ItemList: React.FC<ItemListProps> = ({
         />
       ))}
     </div>
+    {currentPage && totalPages && handlePageChange && (
     <Pagination
       currentPage={currentPage}
       totalPages={totalPages}
       onPageChange={handlePageChange}
     />
+    )}
   </>
 );
+
+ItemList.defaultProps = {
+  currentPage: undefined,
+  totalPages: undefined,
+  handlePageChange: undefined,
+};
 
 export default ItemList;
