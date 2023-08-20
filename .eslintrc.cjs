@@ -24,12 +24,16 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: 2021,
     sourceType: 'module',
     project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
     'react/react-in-jsx-scope': 0,
+    'react/function-component-definition': 0,
+    'eslint-disable-next-line': 0,
+    'linebreak-style': 0,
+    'prettier/prettier': 0
   },
 };
