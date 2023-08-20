@@ -10,7 +10,7 @@ interface ItemProps {
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item, onToggleFavorite }) => {
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     onToggleFavorite(item.id);
   };
