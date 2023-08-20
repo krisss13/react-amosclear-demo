@@ -90,8 +90,8 @@ button > svg,
 }
 
 .item-detail-page {
-  @apply grid
- grid-cols-1
+  @apply md:grid
+  md:grid-cols-1
   lg:grid-cols-2
   justify-items-center
   gap-4;
